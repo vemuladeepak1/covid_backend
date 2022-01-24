@@ -1,6 +1,15 @@
 import React from "react";
-import { Link,NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link,NavLink, useNavigate } from "react-router-dom";
 const Sidebar = ()=>{
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const handleClick = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("type");
+        dispatch({type:"CLEAR"})
+        navigate("/signin")
+  };
     return(
         
         <div className="sticky-top">
@@ -32,7 +41,7 @@ const Sidebar = ()=>{
                             {/* <!-- <a href="../../../Company/candidate_profile/cv manager/cv_manager.html"><i className="far fa-address-card"></i> CV Manager</a> --> */}
                             <NavLink to="/changepassword"><i
                                     className="fas fa-key"></i> Change Password</NavLink>
-                            <NavLink to="/"><i className="fas fa-sign-out-alt"></i> Log Out</NavLink>
+                            <a onClick={()=>handleClick()}><i className="fas fa-sign-out-alt"></i> Log Out</a>
                         </div>
                     </div>
                 </div>

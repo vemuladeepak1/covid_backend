@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-
-
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 // import Categories from './HOME/categories';
 // import Foot from './HOME/footer/foot';
 // import Clients from './Clients';
@@ -15,8 +15,6 @@ import BrowseFilterGrid from './Pages/Browse_Jobs/BrowseFilterGrid';
 import BrowseFilterList from './Pages/Browse_Jobs/BrowseFilterList';
 import Navbar from './NavBar/NavBar';
 import Home from './HOME/Home';
-
-
 import MyProfile from './Students/MyProfile';
 import MyResume from './Students/Resume/MyResume';
 import AppliedJobs from './Students/AppliedJobs';
@@ -75,11 +73,15 @@ export const App = () => {
   <Route exact path="/locationaljobs" element={<LocationalJobs />} />
   <Route exact path="/password" element={<Password />} />
   <Route exact path="/updatepost/:id" element={<Updatepost />} />
-   </Routes>
-   <Footer />
-   </div>
-   </BrowserRouter>
 
+   </Routes>
+   
+   <Footer />
+  
+   </div>
+   <ToastContainer />
+   </BrowserRouter>
+  
 </div>
   )
 }

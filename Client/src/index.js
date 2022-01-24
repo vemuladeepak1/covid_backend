@@ -5,14 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store'
 import {Provider} from 'react-redux'
+import {PersistGate} from 'redux-persist/integration/react';
+import {persistStore} from 'redux-persist'
+let persistor = persistStore(store)
 
 ReactDOM.render(
-  <React.StrictMode>
   <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
   <App />
-  </Provider>
-    
-  </React.StrictMode>,
+  </PersistGate>
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -7,7 +7,6 @@ import apiList from "../lib/apiList";
 import axios from "axios";
 
 const MyProfile = (props) => {
-  const dispatch = useDispatch();
   const [experience, setExperience] = useState(false);
 
   const [profile, setProfile] = useState({
