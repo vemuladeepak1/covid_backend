@@ -105,7 +105,7 @@ router.post("/mobilelogin", (req, res) => {
     if(!phone){
        return res.status(422).json({error:"Please fill all the fields"})
     }else{
-         User.findOne({phone}).then((savedUser)=>{
+         User.findOne({contactNumber:phone}).then((savedUser)=>{
             if(!savedUser){
                 res.status(422).json({error:"User not exist"})  
             }

@@ -1,42 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-// import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-import Testimonials from './Testimonials';
-// import Pagination from './Pagination';
-import Categories from './categories';
-import OurClients from'./OurClients';
-import FeaturedCities from './FeaturedCities'
-import RecentJobs from './RecentJobs';
-const Home = () => {
-  const [isBlue, setIsBlue] = React.useState(false);
-
-
-
-
-    const options ={
-        loop: true,
-             margin: 10,
-             nav: false,
-             autoplay: true,
-             loop: true,
-             responsive: {
-                 0: {
-                     items: 1,
-                 },
-                 600: {
-                     items: 3,
-                 },
-                 1000: {
-                     items: 5,
-                 }
-              } 
-           }
+ const Main = () => {
     return (
         <div>
-        
+            
         <section>
         <div id="sec1" className="container-fluid">
             <div className="container hm1">
@@ -48,7 +15,7 @@ const Home = () => {
                     <h2 className="am2">Search Between More Than <br /> <span className="num_text">50,000</span> Open Jobs.
                     </h2>
                 </div>
-                {/* <div className="hm2">
+                <div className="hm2">
                     <form className="form-control">
                         <div className="row">
                             <div className="col-lg-6 col-md-6">
@@ -57,7 +24,7 @@ const Home = () => {
                                     </label>
                                     <div className="input-group">
                                         <input type="text" className="form-control home_input"
-                                            placeholder="Job Title " />
+                                            placeholder="Job Title, Keywords, or Phrase" />
                                         <div className="input-group-append">
                                             <span className="input-group-text home_input_group">
                                                 <i className="fas fa-search" id="fa1"></i>
@@ -86,21 +53,12 @@ const Home = () => {
                             </div>
                         </div>
                     </form>
-                </div> */}
+                </div>
             </div>
         </div>
     </section>
-
-    <Categories />
-    <OurClients />
-    <FeaturedCities />
-    <RecentJobs />
-    <Testimonials />
-
-
-
-</div>
-
+        </div>
     )
 }
-export default Home
+
+export default Main

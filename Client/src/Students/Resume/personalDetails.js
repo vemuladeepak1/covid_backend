@@ -22,11 +22,11 @@ const PersonalDetails = ({profile,setProfile})=>{
     setProfile({
         ...profile,
         personaldetails:{
-            ...personaldetails,
             [e.target.name]: e.target.value
         },
       })
   }
+  console.log(profile.personaldetails)
   const handlePersonal = (e) => {
     e.preventDefault()
     console.log(profile.personaldetails)

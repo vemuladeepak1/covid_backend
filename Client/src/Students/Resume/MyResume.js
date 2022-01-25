@@ -5,7 +5,8 @@ import axios from 'axios'
 import apiList from "../../lib/apiList";
 import ChipInput from "material-ui-chip-input";
 import PersonalDetails from './personalDetails'
-
+import { Link } from "react-router-dom";
+import moment from "moment";
 
 const Star = ({ starId, marked }) => {
   return (
@@ -394,13 +395,14 @@ const getData = () => {
                   <div className="col-lg-10">
                         <h4 className="resume_title">
                       {profile.name}{" "}
-                   
+                      <Link to="/myprofile">
                         <span class="correct_pencil">
                           <i class="fas fa-pencil-alt pencil_icon"></i>
                         </span>
+                        </Link>    
                     </h4>
                     <p className="resume_text">
-                      Freelance Senior PHP Developer at various agencies
+                      {profile.resumeHeadline}
                     </p>
                     <a className="form-inline">
                       <p className="location_resume_1">
@@ -421,7 +423,12 @@ const getData = () => {
                         <span>
                           <i class="fas fa-shopping-bag marker_icon"></i>
                         </span>{" "}
-                        <span className="location_resume">Fresher</span>
+                        {
+                          profile.experience.experience?
+                          <span className="location_resume">{profile.experience.experience}</span>:
+                          <span className="location_resume">{profile.experience}</span>
+                        }
+                        
                       </p>
                       <p>
                         <span>
@@ -433,7 +440,7 @@ const getData = () => {
                       </p>
                     </a>
 
-                    <div className="progress-box m-t10">
+                    {/* <div className="progress-box m-t10">
                       <div className="progress-info">
                         Profile Strength (Average)<span>70%</span>
                       </div>
@@ -443,13 +450,13 @@ const getData = () => {
                           role="progressbar"
                         ></div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="col-lg-3">
+            {/* <div className="col-lg-3">
               <div className="pending_action_resume">
                 <h5 className="pending_action_heading">Pending Action</h5>
                 <p>
@@ -467,7 +474,7 @@ const getData = () => {
                   <span className="pending_action_content">Verify Email</span>
                 </p>
               </div>
-            </div>
+            </div> */}
 
             <div id="Resume_Headline"></div>
           </div>
@@ -498,10 +505,10 @@ const getData = () => {
                   <a href="#Key_skills"> Keyskills</a>
                   <a href="#Employment"> Employement</a>
                   <a href="#Education"> Eductaion</a>
-                  <a href="#ITskills"> IT Skills</a>
+                  {/* <a href="#ITskills"> IT Skills</a>
                   <a href="#Project"> Project</a>
                   <a href="#Accomplishment"> Accomplishments</a>
-                  <a href="#DesiredCareer"> Desired Career Profile</a>
+                  <a href="#DesiredCareer"> Desired Career Profile</a> */}
                   <a href="#PersonalDetails"> Personal Details</a>
                   <a href="#AttachResume"> Attach Resume</a>
                 </div>
@@ -1287,7 +1294,7 @@ const getData = () => {
                 </div>
               </div>
 
-              <div className="content">
+              {/* <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">IT Skills</h5>
                   <a
@@ -1503,9 +1510,9 @@ const getData = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="content">
+              {/* <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">Projects</h5>
                   <a
@@ -1687,9 +1694,9 @@ const getData = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="content">
+              {/* <div className="content">
                 <div className="job-bx-title clearfix">
                   <h5 className=" pull-left text-capitalize cp">
                     Accomplishment
@@ -2802,7 +2809,7 @@ const getData = () => {
                   </div>
                 </div>
               </div>
-            
+             */}
               <div className="content">
         <div className="job-bx-title clearfix">
       <h5 className=" pull-left text-capitalize cp">
@@ -2829,7 +2836,7 @@ const getData = () => {
           <div className="career_profile_content">
             <h5 className="industry">Date Of Birth</h5>
             <p className="it_employees">
-              12/06/1995
+            {moment(profile.personaldetails.dateofbirth).format("DD-MM-YYYY")}
              
             </p>
           </div>
@@ -2846,7 +2853,7 @@ const getData = () => {
              
             </p>
           </div>
-          <div className="career_profile_content">
+          {/* <div className="career_profile_content">
             <h5 className="industry">Passport Number </h5>
             <p className="it_employees">
               + 123 456 7890{" "}
@@ -2858,7 +2865,7 @@ const getData = () => {
             <p className="it_employees">
               None{" "}
             </p>
-          </div>
+          </div> */}
           <div className="career_profile_content">
             <h5 className="industry">Languages</h5>
             <p className="it_employees"> 
@@ -2893,7 +2900,7 @@ const getData = () => {
              
             </p>
           </div>
-          <div className="career_profile_content" id="AttachResume">
+          {/* <div className="career_profile_content" id="AttachResume">
             <h5 className="industry">
               Work permit of other country
             </h5>
@@ -2901,7 +2908,7 @@ const getData = () => {
               USA{" "}
              
             </p>
-          </div>
+          </div> */}
         </div>
         </div>
       </div>
@@ -2937,7 +2944,7 @@ const getData = () => {
                      <div className=" col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Date Of birth</label>
-                    <input className="form_control" type="date" name="dateofbirth" onChange={(e)=>onchangeDetails(e)}/>
+                    <input className="form_control" type="date" name="dateofbirth" value={moment(profile.personaldetails.dateofbirth).format("YYYY-MM-DD")} onChange={(e)=>onchangeDetails(e)}/>
                   </div>
                 </div>
 
@@ -3083,7 +3090,7 @@ const getData = () => {
                   </div>
                 </div>
 
-                <div className=" col-lg-12 col-md-12">
+                {/* <div className=" col-lg-12 col-md-12">
                   <div className="form-group">
                     <label>Passport Number</label>
                     <input
@@ -3094,7 +3101,7 @@ const getData = () => {
                       placeholder="Enter Passport Number"
                     />
                   </div>
-                </div>
+                </div> */}
                 <div className=" col-lg-12 col-md-12">
                 <div className="form-group">
                 <label>Languages</label>
@@ -3129,7 +3136,7 @@ const getData = () => {
                 </div>
                 </div>
 
-                <div className=" col-lg-12 col-md-12">
+                {/* <div className=" col-lg-12 col-md-12">
                   <div className="form-group">
                     <label className="my-2">
                       Work Parmit To Other Countries
@@ -3142,7 +3149,7 @@ const getData = () => {
                       placeholder="Enter Country Name"
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
             </form>
           </div>
@@ -3167,13 +3174,13 @@ const getData = () => {
                   Recruiters generally do not look at profiles without resumes.
                 </p>
                 <form>
-                  <div className="form-group">
-                    <label for="myfile" className="file_upload">
-                      Upload File
-                    </label>
-
-                    <input type="file" id="myfile" name="myfile" hidden />
-                  </div>
+                <div class="drag-area">
+                  <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                  <header>Drag & Drop to Upload File</header>
+                  <span>OR</span>
+                  <button>Browse File</button>
+                  <input type="file" hidden />
+                </div>
                 </form>
               </div>
             </div>

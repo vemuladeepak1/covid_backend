@@ -51,7 +51,37 @@ router.post("/jobs", jwtAuth, (req, res) => {
 
 // alljobs with middleware
 router.get('/alljobs',(req,res)=>{
-  Job.find({}).then(result=>res.json(result))
+  arr = [
+    {
+      $lookup: {
+        from: "recruiterinfos",
+        localField: "userId",
+        foreignField: "userId",
+        as: "recruiter",
+      },
+    },
+    { $unwind: "$recruiter" },
+  ];
+
+
+console.log(arr);
+
+Job.aggregate(arr)
+  .then((posts) => {
+    if (posts == null) {
+      res.status(404).json({
+        message: "No job found",
+      });
+      return;
+    }
+    res.json(posts);
+  })
+  .catch((err) => {
+    res.status(400).json(err);
+  });
+
+
+  // Job.find({}).then(result=>res.json(result))
 })
 
 

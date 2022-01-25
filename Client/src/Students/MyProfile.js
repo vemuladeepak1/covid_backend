@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import apiList from "../lib/apiList";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 const MyProfile = (props) => {
   const [experience, setExperience] = useState(false);
 
@@ -82,6 +82,7 @@ const MyProfile = (props) => {
   })
   .then((response) => {
  console.log(response.data)
+ toast.success(response.data.message)
     getData();
   })
   .catch((err) => {

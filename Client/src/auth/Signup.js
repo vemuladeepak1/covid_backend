@@ -79,7 +79,7 @@ const Signup = ()=>{
     const api_key = '95da0f09-67a8-11ec-b710-0200cd936042'
     const [sessionid,setSessionid] = useState();
     const [otp,setOtp]=useState();
-    const [isDisabled, setDisabled] = useState(true);
+    const [isDisabled, setDisabled] = useState(false);
     // sendotp
     const sendOtp =(e)=>{
     e.preventDefault()
@@ -120,8 +120,20 @@ const Signup = ()=>{
         })
       };
 
-      const handleLoginRecruiter = () => {
-        console.log(signupDetails)
+      const handleLoginRecruiter = (e) => {
+        e.preventDefault()
+        let validationErrors = {};
+          Object.keys(signupDetails).forEach(name => {
+            const error = validate(name, signupDetails[name]);
+            if (error && error.length > 0) {
+              validationErrors[name] = error;
+            }
+          });
+          if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors)
+            return;
+          }
+          else{
         axios
         .post(apiList.signup,signupDetails)
         .then((response) => {
@@ -133,6 +145,7 @@ const Signup = ()=>{
         .catch((err) => {
           console.log(err.response);
         });
+      }
     }
 
     const handleLogin = (e)=>{
